@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SKILL VERSE — Digital Learning Platform</title>
+  <meta name="description" content="SKILL VERSE - A prototype non-functional digital learning platform for PBL project. Clean responsive single-file mockup." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    /* Basic Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0f1724; 
+      --card:#0b1220;
+      --accent:#6ee7b7; 
+      --accent-2:#60a5fa; 
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    html,body{height:100%}
+    body{
+      background: linear-gradient(180deg,var(--bg),#071024 70%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      padding:32px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#02203a;box-shadow:0 8px 30px rgba(6,8,15,0.6)
+    }
+    .brand h1{font-size:20px;letter-spacing:0.8px}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+    nav a:hover{background:var(--glass);color:var(--accent-2)}
+    .cta{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#021428;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:34px;align-items:center;padding:36px 0}
+    .hero-left h2{font-size:36px;margin-bottom:12px}
+    .tag{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.05);border-radius:999px;color:var(--accent);font-weight:600;margin-bottom:12px}
+    .hero p{color:var(--muted);margin-bottom:18px}
+    .search{display:flex;gap:10px}
+    .search input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .search button{padding:12px 16px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent-2),var(--accent));font-weight:700;color:#02203a}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);padding:20px;box-shadow:0 6px 30px rgba(3,6,18,0.6);backdrop-filter: blur(6px)}
+
+    /* Course list */
+    .courses{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+    .course{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .course .thumb{width:72px;height:56px;border-radius:8px;background:linear-gradient(120deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;color:#012335}
+    .course h4{font-size:15px}
+    .meta{color:var(--muted);font-size:13px}
+
+    /* Right column stats */
+    .stats{display:grid;gap:12px}
+    .stat{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent)}
+    .progress{height:8px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:68%}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0}
+    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);text-align:center}
+    .feature h3{margin-top:10px;font-size:16px}
+    .feature p{color:var(--muted);font-size:13px;margin-top:8px}
+
+    /* Courses Grid */
+    .courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .course-card{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
+    .course-card h4{margin:8px 0}
+    .course-card p{color:var(--muted);font-size:13px}
+
+    footer{border-top:1px solid rgba(255,255,255,0.03);margin-top:36px;padding-top:18px;display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .courses-grid{grid-template-columns:repeat(2,1fr)}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      body{padding:18px}
+      nav{display:none}
+      .courses-grid{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+    }
+
+    /* small animation touches */
+    .logo{transform:translateY(0);transition:transform .3s ease}
+    .logo:hover{transform:translateY(-6px)}
+    .card{transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-6px)}
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .btn-ghost{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">SV</div>
+        <div>
+          <h1>SKILL VERSE</h1>
+          <div class="muted" style="font-size:12px">Digital Learning Platform — PBL Prototype</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.html">Resume Builder</a>
+        <a href="quiz.html">Smart Quiz</a>
+        <a class="cta" href="login.html">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-left">
+          <div class="tag">PBL • Digital Learning</div>
+          <h2>Learn job-ready skills through hands-on projects.</h2>
+          <p>SKILL VERSE is a prototype digital learning platform made for your Project-Based Learning (PBL) submission. Browse short courses, guided projects, and interactive tutorials designed for students and beginners.</p>
+
+          <div class="search card">
+            <input placeholder="Search courses, projects or skills (e.g. React, MySQL, Data Science)" />
+            <button>Search</button>
+          </div>
+
+          <div class="card" style="margin-top:16px">
+            <h3 style="margin-bottom:8px">Featured mini-courses</h3>
+            <div class="courses">
+              <div class="course">
+                <div class="thumb">JS</div>
+                <div>
+                  <h4>JavaScript Essentials</h4>
+                  <div class="meta">6 lessons • Beginner</div>
+                </div>
+              </div>
+              <div class="course">
+                <div class="thumb">DB</div>
+                <div>
+                  <h4>MySQL for Web</h4>
+                  <div class="meta">4 lessons • Beginner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="stats">
+          <div class="card" style="text-align:center">
+            <h3>Students Enrolled</h3>
+            <div style="font-size:28px;font-weight:800;margin-top:6px">1,248</div>
+            <div class="muted" style="font-size:13px;margin-top:6px">Since project launch</div>
+          </div>
+
+          <div class="card">
+            <h4 style="margin-bottom:8px">Course Completion</h4>
+            <div class="meta">Average progress of active learners</div>
+            <div style="margin-top:12px" class="progress"><i></i></div>
+          </div>
+
+          <div class="card" style="text-align:center">
+            <h4>Next Live Workshop</h4>
+            <div class="muted" style="margin-top:6px">Sep 15, 2025 • 6:00 PM</div>
+            <button class="btn-ghost" style="margin-top:10px">Remind me</button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="features" id="about">
+        <div class="feature card">
+          <div style="font-size:28px;font-weight:800">🎯</div>
+          <h3>Project Based</h3>
+          <p>Learn by building — short projects that you can include in your portfolio.</p>
+        </div>
+        <div class="feature card">
+          <div style="font-size:28px;font-weight:800">💼</div>
+          <h3>Career Focused</h3>
+          <p>Skills mapped to job roles so you know what to learn next.</p>
+        </div>
+        <div class="feature card">
+          <div style="font-size:28px;font-weight:800">🤝</div>
+          <h3>Mentor Support</h3>
+          <p>Ask questions, get peer reviews, and improve through feedback.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="margin-bottom:12px">Popular Courses</h2>
+        <div class="courses-grid" id="courses">
+          <div class="course-card card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <h4>React Frontend Basics</h4>
+                <div class="muted">Build a small SPA using React & components</div>
+              </div>
+              <div style="font-weight:800">4h</div>
+            </div>
+            <p style="margin-top:10px">A project-based introduction to React, props, state, and routing — perfect for your e-commerce frontend.</p>
+          </div>
+
+          <div class="course-card card">
+            <h4>MySQL Essentials</h4>
+            <div class="muted">Design tables, write queries, and connect to a backend</div>
+            <p style="margin-top:10px">Hands-on tasks to create and query a product catalog database for an e-commerce site.</p>
+          </div>
+
+          <div class="course-card card">
+            <h4>Fullstack Project</h4>
+            <div class="muted">Combine frontend and database to deploy a simple product app</div>
+            <p style="margin-top:10px">Template project for PBL — non-functional demo for presentations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:28px" id="contact">
+        <div class="card" style="padding:18px;display:grid;grid-template-columns:1fr 320px;gap:16px">
+          <div>
+            <h3>Contact</h3>
+            <p class="muted">This is a non-functional prototype made for the PBL (Project Based Learning) assignment. Replace the static content with your own descriptions and link to real pages when converting to a functional site.</p>
+
+            <ul style="margin-top:12px;color:var(--muted);font-size:14px;line-height:1.8">
+              <li><strong>Project:</strong> SKILL VERSE — Digital Learning Platform</li>
+              <li><strong>Course:</strong> PBL (Project Based Learning)</li>
+              <li><strong>Student:</strong> [Your Name]</li>
+              <li><strong>Supervisor:</strong> [Teacher / Mentor]</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Send a message</h4>
+            <form>
+              <input placeholder="Your name" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:8px;background:transparent;color:inherit" />
+              <input placeholder="Email" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:8px;background:transparent;color:inherit" />
+              <textarea placeholder="Message" rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:8px;background:transparent;color:inherit"></textarea>
+              <button type="button" class="cta" style="width:100%">Send (non-functional)</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>
+        © <strong>SKILL VERSE</strong> — Prototype for PBL • Built as a single-file mockup
+      </div>
+      <div class="muted">Made with Legends</div>
+    </footer>
+  </div>
+
+  <!--
+    Notes:
+    - Dear Mam this file is intentionally non-functional (no backend). Use it as a static mockup for your PBL submission.
+    - To make it functional later: connect the contact form to a server, turn course cards into dynamic pages, and add authentication for users.
+  -->
+</body>
+</html>
